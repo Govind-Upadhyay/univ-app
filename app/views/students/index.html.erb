@@ -10,10 +10,16 @@
 			<div class="card-content white-text">
 				<span class="card-title">Name: <%= student.name %></span>
 				<span>Email: <%= student.email %></span>
-				<p>Course Enrollments: None</p>
+				<p>No. of Course Enrollments: 
+					<% if student.courses.empty? %>
+					None
+					<% else %>
+					 <%= student.courses.count%>
+					<% end %>
+				</p>
 			</div>
 			<div class="card-action">
-				<%= link_to 'View Profile'.html_safe, student_path(student), class: "waves-effect waves-light btn" %>
+				<%= link_to 'View Profile', student_path(student), class: "waves-effect waves-light btn" %>
 				
 			</div>
 		</div>

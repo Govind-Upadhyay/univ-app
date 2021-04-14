@@ -12,8 +12,9 @@
 			</div>
 			<div class="card-content">
 				<span class="card-title activator gray-text text-darken-4"><%= course.short_name %><i class="material-icons right">more_vert</i></span>
-				<p><a href="#">Enroll</a></p>
-				<p><a href="#">Info</a></p>
+				<% if logged_in? && !(current_user.courses.include?(course)) %>
+				<p><%= link_to 'ENROLL', course_enroll_path(course_id: course.id), method: :post %></p>
+				<% end %>
 			</div>
 			<div class="card-reveal blue-grey darken-3 white-text">
 				<span class="card-title white-text text-darken-4"><%= course.name %>
